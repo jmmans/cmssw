@@ -72,6 +72,9 @@ public:
   int slbChannelIndex() const { return hcalElectronicsId_&0x3; }
   /// get the SLB site number (valid only for VME trigger-chain ids)
   int slbSiteNumber() const { return ((hcalElectronicsId_>>2)&0x7); }
+ 
+  /// get the HTR channel id (1-24)
+  int htrChanId() const { return isVMEid()?((fiberChanId()+1)+((fiberIndex()-1)*3)):(0); }
 
   /// get the HTR-wide slb channel code (letter plus number)
   std::string slbChannelCode() const;
